@@ -6,6 +6,7 @@ use crate::error::AppError;
 use crate::logger::Logger;
 use std::sync::atomic::{AtomicBool, Ordering};
 
+/// Storage manager for TOTP accounts
 pub struct Storage {
     file_path: String,
     accounts: Vec<Account>,

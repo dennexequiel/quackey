@@ -3,6 +3,7 @@ use std::io::{Read, Write, Seek, SeekFrom};
 use chrono::Local;
 use crate::error::AppError;
 
+/// Logger for application events
 #[derive(Clone)]
 pub struct Logger {
     file_path: String,

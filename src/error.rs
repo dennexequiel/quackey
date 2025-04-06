@@ -2,6 +2,7 @@ use std::fmt;
 use std::io;
 use std::time::SystemTimeError;
 
+/// Application error types
 #[derive(Debug)]
 pub enum AppError {
     IoError(io::Error),
@@ -31,7 +32,6 @@ impl std::error::Error for AppError {}
 
 impl From<io::Error> for AppError {
     fn from(error: io::Error) -> Self {
-        // Check if the error is a permission error
         if error.kind() == io::ErrorKind::PermissionDenied {
             AppError::PermissionError(format!("Permission denied: {}", error))
         } else {
@@ -43,6 +43,12 @@ impl From<io::Error> for AppError {
 impl From<SystemTimeError> for AppError {
     fn from(error: SystemTimeError) -> Self {
         AppError::SystemTimeError(error)
+    }
+}
+
+impl From<Box<dyn std::error::Error>> for AppError {
+    fn from(error: Box<dyn std::error::Error>) -> Self {
+        AppError::FileError(error.to_string())
     }
 }
 

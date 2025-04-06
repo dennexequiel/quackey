@@ -48,12 +48,6 @@ impl Config {
         }
     }
 
-    /// Check if the configuration is using default values
-    #[allow(dead_code)]
-    pub fn is_using_defaults(&self) -> bool {
-        self.storage_dir == "."
-    }
-
     /// Get the full log file path (always in the same directory as the config file)
     pub fn get_log_file_path(&self) -> String {
         DEFAULT_LOG_FILENAME.to_string()

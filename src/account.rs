@@ -3,8 +3,7 @@ use totp_rs::{TOTP, Algorithm as TotpAlgorithm, Secret};
 use std::time::{SystemTime, UNIX_EPOCH};
 use crate::error::AppError;
 
-// Create our own Algorithm enum that can be serialized/deserialized
-// Use serde rename attributes to match the totp-rs variant names
+/// TOTP algorithm variants that can be serialized/deserialized
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
 pub enum Algorithm {
     #[serde(rename = "SHA1")]
@@ -31,6 +30,7 @@ fn default_period() -> u64 { 30 }
 fn default_digits() -> usize { 6 }
 fn default_algorithm() -> Algorithm { Algorithm::Sha1 }
 
+/// TOTP account information
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Account {
     name: String,
