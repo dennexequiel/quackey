@@ -1,0 +1,20 @@
+[package]
+name = "hello-totp"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+chrono = "0.4.40"
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.140"
+base32 = "0.5.1"
+colored = "3.0.0"
+dialoguer = "0.11.0"
+arboard = "3.5.0"
+prettytable = "0.10.0"
+indicatif = "0.17.11"
+term_size = "0.3.2"
+
+[dependencies.totp-rs]
+version = "5.6.0"
+features = ["gen_secret"]

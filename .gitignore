@@ -1,0 +1,4 @@
+/target
+config.json
+totp_app.log
+accounts.json
